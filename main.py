@@ -1,8 +1,7 @@
-# branch1
+# branch2
 import hashlib
 
 def hash_password(password):
-
     hash_object = hashlib.sha256(password.encode())
     hashed_password = hash_object.hexdigest()
     return hashed_password
@@ -21,7 +20,5 @@ if __name__ == "__main__":
         password = file.read().strip()
 
     hashed_password = hash_password(password)
-
-    print(f"A senha é: {password}")
 
     check_password('hashed_password.txt', hashed_password)
