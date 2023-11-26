@@ -1,0 +1,28 @@
+name: Automated Tests
+
+on:
+  push:
+    branches:
+      - branch1
+      - branch2
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Run tests for branch1
+      if: github.ref == 'refs/heads/branch1'
+      run: python main.py
+
+    - name: Run tests for branch2
+      if: github.ref == 'refs/heads/branch2'
+      run: pytest main.py
